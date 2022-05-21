@@ -3,9 +3,9 @@ from cookies import Cookies
 
 class Cogeco:
     """
-    @class Cogeco
+    @class Eastlink
     
-    MSO class to handle authorization with the Cogeco MSO
+    MSO class to handle authorization with the Eastlink MSO
     """
 
     @staticmethod
@@ -15,14 +15,14 @@ class Cogeco:
     @staticmethod
     def authorize(streamProvider, username, password):
         """
-        Perform authorization with Cogeco
+        Perform authorization with Eastlink
 
         @param streamProvider the stream provider object.
         @param username the username to authenticate with
         @param password the password to authenticate with
         """
 
-        uri =  streamProvider.getAuthURI("Cogeco")
+        uri =  streamProvider.getAuthURI("Eastlink")
 
         jar = Cookies.getCookieJar()
         opener = urllib2.build_opener(urllib2.HTTPCookieProcessor(jar))#,
@@ -86,7 +86,7 @@ class Cogeco:
             print "Unable to find action form"
             return None
 
-        action = "https://customer-services.cogeco.com" + action.group(1)
+        action = "https://eastlink.ca" + action.group(1)
 
         return Cogeco.postLogin(username, password, action)
 
